@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+    <title>Responder encuesta</title>  <!--Cambiar el  titulo por el nombre de la encuesta-->
+  </head>
+  <!--Fin de head  -->
+
+  <body>
+    <header id="header-container">
+      <div class="container"> 
+        <a href="/gestor/administracion/{{ encuesta.usuario.id }}">
+        <h2>Encuestas UES</h2>
+        </a>
+      </div>
+    </header>
+    <!--Fin de header -->
+    <!--Inicio del formulario, agregar aqui los datos-->
+    <form action="{% url 'gestor:ver' encuesta.id %}" method="POST" id="pregunta-form">
+    {% csrf_token %}
+      <input type="hidden" id="id_encuesta" name="id_encuesta" value="{{ encuesta.id }}">
+
+      {%if encuesta %}
+      <h3 id="nombre-encuesta">{{ encuesta.titulo_encuesta }}</h3>
+            {% for pr in pregunta %}         
+        <div class="contenedor-pregunta">
+          <div class="row">
+            <div class="col-md-9  offset-1" id="texto-pregunta" >
+              <h5>{{ forloop.counter }}) {{ pr.contenido }}</h5>
+            </div> <!--Contenedor del titulo pregunta-->
+          </div>
+          {% for res in respuesta %}
+            {% if pr.id == res.pregunta.id %}
+          <div class="row offset-1"> 
+            <div class="form-check col-sm-5 ">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="Radio{{ pr.id }}" id="res_id_{{ res.id }}" value="{{ res.id }}">
+                  {{ res.contenido }}
+                </label>
+            </div>
+          </div>
+         {% endif %}
+        {% endfor %}   
+        {% endfor %}
+      {% endif %}
+
+          <br>
+        </div> <!--Fin contenedor de pregunta-->
+        <div class="row offset-1" > <!-- Boton enviar, NO SACAR DEL FORM-->
+            <input type="submit" class="btn btn-primary" value="Volver" name="volver">
+        </div>
+    </form>  <!--Fin formulario-->
+    <div class="container">
+      <div class="row"> <!-- Contenedor del titulo de la encuesta-->
+            <div class="col-md-1" align="right"> <br> 
+            <label>Link:</label>
+            </div>
+            <div class="col-md-11" align="left">
+            <input type="text" id="nombre-encuesta" class="form-control row col-lg-10 offset-1" placeholder="Titulo de la encuesta" value="{{ ip }}:8000/gestor/responder/{{encuesta.id}}" name="id_enc{{ encuesta.id }}">
+            </div>
+        </div>
+      </div>  
+    <footer> <!--Pie de pagina--> 
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <p> &copy;  2017. Todos los derechos reservados</p>
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="col-sm-8">
+            Facultad de Ingeniería y arquitectura. Universidad de El Salvador.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!--Requerido para Bootstrap-->
+  </body>
+</html>

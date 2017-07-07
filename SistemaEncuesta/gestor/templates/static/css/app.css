@@ -1,0 +1,67 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body{
+	font-family: 'Montserrat', sans-serif;
+	margin: 0 0 100px; /* bottom = footer height */
+}
+
+footer {
+    background-color: #CAD9B8;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 65px%;
+    width: 100%;
+    overflow:hidden;
+}
+
+#header-container{
+	background-color: #529b9b;
+	color: white;
+	font-size: 250%;
+}
+
+.login-container{
+	margin-top:8em;
+}
+
+#nombre-encuesta{
+	text-align: center;
+	margin-top: 1em;	
+	margin-bottom: 1em;
+}
+
+#texto-pregunta{
+	font-size: 120%;
+	margin-bottom: 0.55em;
+	margin-top: 1em;
+}
+
+#btn-agregar-pregunta{
+	margin-top: 2em;
+	margin-left: 15px;
+}
+
+#btn-eliminar{
+	margin-bottom: 10px;
+}
+
+#btn-guardar{
+	margin-right: 5px;
+}
+
+#link-admin-container{
+	text-align: center;
+	margin-top: 10px;
+}
+#admin-container{
+	margin-bottom: 35px;
+}
+
+#encuesta-container{
+	border: solid #bcbcbc;
+	border-radius: 4px
+}

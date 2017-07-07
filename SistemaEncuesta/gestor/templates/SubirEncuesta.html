@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/app.css">
+    <title>Subir encuesta</title>  
+  </head>
+  <!--Fin de head  -->
+
+  <body>
+    <header id="header-container">
+      <div class="container"> 
+        Encuestas UES
+      </div>
+    </header>
+    <!--Fin de header -->
+
+    <div class="container">
+    	<div class="row offset-1">
+    		<h2>
+    			Sitio del administrador.
+    		</h2>
+    	</div>
+    </div>
+
+    <div class="container">
+        <div class="row offset-2">
+            <div class="col-md-6" style="text-align: justify;">
+                Para subir una encuesta, debe tener un archivo txt donde ya haya redactado una encuesta y con el formato siguiente /*Pone aqui el formato que vas a pedir*/. Cuando tenga listo su archivo, subalo al servidor y la encuesta estara ingresada al sistema.
+            </div>
+        </div>
+        <div class="row offset-2" style="margin-top: 2em;">
+            <div class="col">
+                <form enctype="multipart/form-data" action="uploader.php" method="POST">
+                    <input name="uploadedfile" type="file" />   <!-- Presionar este boton para subir archivo-->
+                    <input type="submit" value="Subir archivo" /> <!--Presionar este boton para enviar archivo-->
+                </form>    
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer-container"> <!--Pie de pagina--> 
+    	<div class="container">
+	    	<div class="row">
+	    		<div class="col-sm-4">
+	    			<p> &copy;  2017. Todos los derechos reservados</p>
+	    		</div>
+	    	</div>
+	    	<div class="row"> 
+	    		<div class="col-sm-8">
+	    			Facultad de Ingeniería y arquitectura. Universidad de El Salvador.
+	    		</div>
+	    	</div>
+    	</div>
+    </footer>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!--Requerido para Bootstrap-->
+  </body>
+</html>

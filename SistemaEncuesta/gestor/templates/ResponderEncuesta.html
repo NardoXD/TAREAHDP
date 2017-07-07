@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+    <title>Responder encuesta</title>  <!--Cambiar el  titulo por el nombre de la encuesta-->
+  </head>
+  <!--Fin de head  -->
+
+  <body>
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.9";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <header id="header-container">
+      <div class="container"> 
+        <a href="/gestor/administracion/{{ encuesta.usuario.id }}">
+        <h2>Encuestas UES</h2>
+        </a>
+      </div>
+    </header>
+    <!--Fin de header -->
+    <!--Inicio del formulario, agregar aqui los datos-->
+    <form action="{% url 'gestor:responder_encuesta' encuesta.id %}" method="POST" id="pregunta-form">
+    {% csrf_token %}
+      <input type="hidden" id="id_encuesta" name="id_encuesta" value="{{ encuesta.id }}">
+
+      {%if encuesta %}
+      <h3 id="nombre-encuesta">{{ encuesta.titulo_encuesta }}</h3>
+            {% for pr in pregunta %}         
+        <div class="contenedor-pregunta">
+          <div class="row">
+            <div class="col-md-9  offset-1" id="texto-pregunta" >
+              <h5>{{ forloop.counter }}) {{ pr.contenido }}</h5>
+            </div> <!--Contenedor del titulo pregunta-->
+          </div>
+          {% for res in respuesta %}
+            {% if pr.id == res.pregunta.id %}
+          <div class="row offset-1"> 
+            <div class="form-check col-sm-5 ">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="Radio{{ pr.id }}" id="res_id_{{ res.id }}" value="{{ res.id }}">
+                  {{ res.contenido }}
+                </label>
+            </div>
+          </div>
+         {% endif %}
+        {% endfor %}   
+        {% endfor %}
+      {% endif %}
+
+          <br>
+        </div> <!--Fin contenedor de pregunta-->
+        <div class="container"></div>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+              <script src='https://www.google.com/recaptcha/api.js'></script>
+              <div class="g-recaptcha" data-sitekey="6Ld3oCcUAAAAAJhl4ZAKWmAqxsONYmg3P4xMjN1u"></div>
+          </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-1 offset-1"><!-- Boton enviar, NO SACAR DEL FORM-->
+              <input type="submit" class="btn btn-primary" value="Votar">
+            </div>
+        </div> 
+        <div class="row"> 
+          <div class="col-md-1"></div>
+          <div class="col-md-1" align="left">
+          <!--data-ref=ruta absoluta a compartir-->
+          <div class="fb-share-button" data-href="http://127.0.0.1:8000/gestor/responder/{{encuesta.id}}" data-layout="button" data-size="small" data-mobile-iframe="true">
+          <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Compartir</a></div>
+          </div>
+          <div class="col-md-1">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://127.0.0.1:8000/gestor/responder/{{encuesta.id}}">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </div>
+        </div>
+    </form>  <!--Fin formulario-->
+    
+    <footer> <!--Pie de pagina--> 
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <p> &copy;  2017. Todos los derechos reservados</p>
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="col-sm-8">
+            Facultad de Ingeniería y arquitectura. Universidad de El Salvador.
+          </div>
+          <div class="col-sm-4 offset-">
+            <a href="/gestor/">  <!-- Link para iniciar sesion como administrador-->
+              Iniciar sesion como Administrador
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!--Requerido para Bootstrap-->
+  </body>
+</html>

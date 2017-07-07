@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="/static/css/app.css">
+    <title>Iniciar Sesión</title>
+  </head>
+  <!--Fin de head  -->
+
+  <body>
+    <header id="header-container">
+      <div class="container"> 
+        <a href="/gestor/">
+        <h2>Encuestas UES</h2>
+        </a>
+      </div>
+    </header>
+    <!--Fin de header -->
+
+    <div class="container login-container">
+    <form id="login-form" action="{% url 'gestor:login' %}" method="POST">
+      {% csrf_token %}
+      <div class="row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4" >
+        <label for="InputEmail">Dirección de correo</label>
+        <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Ingrese su correo" name="email">
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-md-4"></div>
+      <div class="form-group col-md-4">
+        <label for="InputPassword">Contraseña</label>
+        <input type="password" class="form-control" id="InputPassword" placeholder="Ingrese su contraseña" name="password">
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" align="right">
+          <input type="submit" class="btn btn-primary offset-6" id="btn-login" value="Iniciar Sesión" name="loguear">
+        </div>
+      </div>
+    </form>
+    </div>
+    <!-- Fin de formmulario   -->
+    <footer> <!--Pie de pagina--> 
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <p> &copy;  2017. Todos los derechos reservados</p>
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="col-sm-8">
+            Facultad de Ingeniería y arquitectura. Universidad de El Salvador.
+          </div>
+        </div>
+      </div>
+    </footer>    
+
+		
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!--Requerido para Bootstrap-->
+  </body>
+</html>

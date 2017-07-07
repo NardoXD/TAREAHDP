@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="/static/css/app.css">
+    <title></title>
+  </head>
+  <!--Fin de head  -->
+
+  <body>
+    <header id="header-container">
+      <div class="container"> 
+        <a href="/gestor/administracion/{{ usuario.id }}">
+        <h2>Encuestas UES</h2>
+        </a>
+      </div>
+    </header>
+
+    <form action="{% url 'gestor:agregar_encuesta' usuario.id %}" style="margin-top: 5em" method="POST">
+    {% csrf_token %}
+      	<div class="container">
+	        <div class="row">
+	        <div class="col-md-1"></div>
+	          <div class="col-md-4">
+	              <label>Nombre de encuesta:</label>
+	          </div>
+	        </div>
+	        <div class="row">
+	        <div class="col-md-1"></div>
+	          <div class="col-xl-9">
+	            <input type="text" class="form-control" placeholder="Encuesta" name="encuesta">
+	          </div>
+	        </div>
+	        <div class="row">
+	        <div class="col-md-1"></div>
+	          <div class="col-md-4">
+	              <label>Descripción:</label>
+	          </div>
+	        </div>
+	        <div class="row">
+	        <div class="col-md-1"></div>
+	          <div class="col-xl-9">
+	            <input type="text" class="form-control" placeholder="Descripción" name="descripcion">
+	          </div>
+	        </div>
+	        <div class="row">
+	        	<div class="col-md-8"></div>
+	          <div class=" col-md-2" align="right"><!--Boton enviar-->
+	             <input type="submit" class="btn btn-success" id="btn-enviar" style="margin-top: 1em;" value="Enviar"> 
+	          </div>
+	        </div>
+   		</div>
+    </form>
+    <footer> <!--Pie de pagina--> 
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <p> &copy;  2017. Todos los derechos reservados</p>
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="col-sm-8">
+            Facultad de Ingeniería y arquitectura. Universidad de El Salvador.
+          </div>
+          <div class="col-sm-4 offset-">
+            <a href="#">  <!-- Link para iniciar sesion como administrador-->
+              Iniciar sesion como Administrador
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+		
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!--Requerido para Bootstrap-->
+  </body>
+  
+
+</html>
